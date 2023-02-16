@@ -1,5 +1,15 @@
 import './../css/admin.css';
 
-import ExcursionsAPI from './ExcursionsAPI';
+import ExcursionsAPI from './modules/ExcursionsAPI';
+import AdminPanel from './modules/AdminPanel';
+import Utilities from './modules/Utilities';
 
-console.log('admin');
+document.addEventListener('DOMContentLoaded', init);
+
+function init() {
+    const utilities = new Utilities();
+    const api = new ExcursionsAPI();
+    const adminPanel = new AdminPanel(utilities, api);
+
+    adminPanel.init();
+}

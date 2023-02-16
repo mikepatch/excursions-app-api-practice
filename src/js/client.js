@@ -1,19 +1,16 @@
+import './../css/reset.css';
 import './../css/client.css';
 
-import ExcursionsAPI from './ExcursionsAPI';
-import ExcursionsPanel from './modules/ExcursionsPanel';
+import ExcursionsAPI from './modules/ExcursionsAPI';
+import ClientPanel from './modules/ClientPanel';
+import Utilities from './modules/Utilities';
 
 document.addEventListener('DOMContentLoaded', init);
 
 function init() {
-    console.log('client');
-
+    const utilities = new Utilities();
     const api = new ExcursionsAPI();
-    const excursionsPanel = new ExcursionsPanel(api)
+    const clientPanel = new ClientPanel(utilities, api);
 
-    excursionsPanel.init()
+    clientPanel.init();
 }
-
-
-
-

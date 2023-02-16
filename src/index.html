@@ -6,9 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>JavaScript: API oraz FETCH - client, devmentor.pl</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/5e22951e77.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
+    <header class="header">
+        <h1 class="header__title">Wycieczki</h1>
+    </header>
 
     <section class="panel">
         <ul class="panel__excursions excursions">
@@ -18,54 +28,64 @@
                     <p class="excursions__description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet
                         aliquam quam laboriosam quaerat temporibus dicta vitae maxime! Nemo, nobis veritatis?</p>
                 </header>
+
                 <form class="excursions__form">
                     <div class="excursions__field">
-                        <label class="excursions__field-name">
-                            Dorosły: <span class="excursions__price">99</span> PLN x <input
-                                class="excursions__field-input" name="adults" />
-                        </label>
+                        <label for="adultsNumber" class="excursions__field-name">
+                            Liczba dorosłych <small class="excursions__field-price">99</small></label>
+                        <div class="excursions__field-input-container">
+                            <button type="button" class="minusBtn minusBtn--disabled"><i
+                                    class="fa-solid fa-circle-minus"></i></button>
+                            <input class="excursions__field-input" name="adultsNumber" type="number" value="0" />
+                            <button type="button" class="plusBtn"><i class="fa-solid fa-circle-plus"></i></button>
+                        </div>
                     </div>
                     <div class="excursions__field">
-                        <label class="excursions__field-name">
-                            Dziecko: <span class="excursions__price">50</span> PLN x <input
-                                class="excursions__field-input" name="children" />
-                        </label>
+                        <label for="childrenNumber" class="excursions__field-name">
+                            Liczba dzieci <small class="excursions__field-price">50</small></label>
+                        <div class="excursions__field-input-container">
+                            <button type="button" class="minusBtn minusBtn--disabled"><i
+                                    class="fa-solid fa-circle-minus"></i></button>
+                            <input class="excursions__field-input" name="childrenNumber" type="number" value="0" />
+                            <button type="button" class="plusBtn"><i class="fa-solid fa-circle-plus"></i></button>
+                        </div>
                     </div>
                     <div class="excursions__field excursions__field--submit">
-                        <input class="excursions__field-input excursions__field-input--submit"
-                            value="dodaj do zamówienia" type="submit" />
+                        <button class="excursions__field-input excursions__field-input--submit" type="submit">Dodaj do
+                            koszyka</button>
                     </div>
                 </form>
             </li>
         </ul>
+
         <section class="panel__form">
             <form class="panel__order order" novalidate>
                 <div class="order__total-price">
                     Razem:
-                    <span class="order__total-price-value">199PLN</span>
+                    <span class="order__total-price-value">0 PLN</span>
                 </div>
                 <div class="order__field">
-                    <label class="order__field-name">
-                        Imię i nazwisko: <input class="order__field-input" name="name" />
-                    </label>
+                    <label for="name" class="order__field-name">Imię i nazwisko</label>
+                    <input id="name" class="order__field-input" name="name" />
                 </div>
                 <div class="order__field">
-                    <label class="order__field-name">
-                        Email <input class="order__field-input" name="email" />
-                    </label>
+                    <label for="email" class="order__field-name">Email</label>
+                    <input id="email" class="order__field-input" name="email" />
                 </div>
                 <div class="order__field order__field--submit">
-                    <input class="order__field-input order__field-submit" value="zamawiam" type="submit" />
+                    <button class="order__field-input order__field-submit" type="submit">Zamawiam</button>
                 </div>
             </form>
+            <h2 class="panel__basket-title">Koszyk</h2>
             <ul class="panel__summary summary">
                 <li class="summary__item summary__item--prototype">
                     <h3 class="summary__title">
                         <span class="summary__name">Ogrodzieniec</span>
-                        <strong class="summay__total-price">199PLN</strong>
-                        <a href="" class="summary__btn-remove" title="usuń">X</a>
+                        <strong class="summary__total-price">199PLN</strong>
+                        <a href="" class="summary__btn-remove" title="usuń"><i
+                                class="summary__btn-remove-icon fa-solid fa-trash-can"></i></a>
                     </h3>
-                    <p class="summary__prices">dorośli: 1 x 99PLN, dzieci: 2 x 50PLN</p>
+                    <small class="summary__prices">dorośli: 1 x 99PLN, dzieci: 2 x 50PLN</small>
                 </li>
             </ul>
         </section>

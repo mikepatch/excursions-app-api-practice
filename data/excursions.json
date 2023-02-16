@@ -1,26 +1,73 @@
 {
-    "excursions": [
+  "excursions": [
+    {
+      "title": "Ogrodzieniec",
+      "description": "Zamek Ogrodzieniec – ruiny zamku leżącego na Jurze Krakowsko-Częstochowskiej, wybudowanego w systemie tzw. Orlich Gniazd, we wsi Podzamcze w województwie śląskim, w powiecie zawierciańskim, około 2 km na wschód od Ogrodzieńca. Zamek został wybudowany w XIV – XV w. przez ród Włodków Sulimczyków.",
+      "adultPrice": "99",
+      "childPrice": "49",
+      "id": 1
+    },
+    {
+      "title": "Ojców",
+      "description": "Wieś w województwie małopolskim, w powiecie krakowskim, w gminie Skała, na terenie Wyżyny Krakowsko-Częstochowskiej, w Dolinie Prądnika, na Szlaku Orlich Gniazd. W Królestwie Polskim istniała gmina Ojców. W latach 1975–1998 miejscowość położona była w województwie krakowskim. W latach 1928–1966 Ojców miał status uzdrowiska posiadającego charakter użyteczności publicznej.",
+      "adultPrice": "99",
+      "childPrice": "49",
+      "id": 2
+    },
+    {
+      "title": "Gdańsk",
+      "description": "Gdańsk – miasto na prawach powiatu w północnej Polsce w województwie pomorskim, położone nad Morzem Bałtyckim u ujścia Motławy do Wisły nad Zatoką Gdańską. Centrum kulturalne, naukowe i gospodarcze oraz węzeł komunikacyjny północnej Polski, stolica województwa pomorskiego.",
+      "adultPrice": "200",
+      "childPrice": "100",
+      "id": 3
+    },
+    {
+      "title": "Sopot",
+      "description": "Sopot – miasto na prawach powiatu w północnej Polsce nad Zatoką Gdańską, położone na Pobrzeżu Gdańskim, między Gdańskiem a Gdynią, z którymi tworzy Trójmiasto, w obrębie aglomeracji trójmiejskiej.",
+      "adultPrice": "200",
+      "childPrice": "100",
+      "id": 4
+    },
+    {
+      "title": "Zakopane",
+      "description": "Zakopane – miasto w południowej Polsce, w województwie małopolskim, siedziba powiatu tatrzańskiego. Największa miejscowość w bezpośrednim otoczeniu Tatr, duży ośrodek sportów zimowych, potocznie nazywany zimową stolicą Polski.",
+      "adultPrice": "249",
+      "childPrice": "119",
+      "id": 5
+    },
+    {
+      "title": "Warszawa",
+      "description": "Warszawa, miasto stołeczne Warszawa – stolica Polski i województwa mazowieckiego, największe miasto w kraju, położone w jego centralnej części, na Nizinie Środkowomazowieckiej, na Mazowszu, nad Wisłą. Prawa miejskie uzyskała przed 1300.",
+      "adultPrice": "89",
+      "childPrice": "29",
+      "id": 6
+    }
+  ],
+  "orders": [
+    {
+      "customerName": "test user",
+      "email": "TestUser@gmail.com",
+      "totalPrice": 296,
+      "orderItems": [
         {
-            "id": 1,
-            "title": "Ogrodzieniec",
-            "description": "Zamek Ogrodzieniec – ruiny zamku leżącego na Jurze Krakowsko-Częstochowskiej, wybudowanego w systemie tzw. Orlich Gniazd, we wsi Podzamcze w województwie śląskim, w powiecie zawierciańskim, około 2 km na wschód od Ogrodzieńca. Zamek został wybudowany w XIV – XV w. przez ród Włodków Sulimczyków.",
-            "adultPrice": 300,
-            "childPrice": 150
+          "title": "Ogrodzieniec",
+          "adultsPrice": "99",
+          "childrenPrice": "49",
+          "adultsNumber": "1",
+          "childrenNumber": "1",
+          "totalPrice": 148
         },
         {
-            "id": 2,
-            "title": "Ojców",
-            "description": "Wieś w województwie małopolskim, w powiecie krakowskim, w gminie Skała, na terenie Wyżyny Krakowsko-Częstochowskiej, w Dolinie Prądnika, na Szlaku Orlich Gniazd. W Królestwie Polskim istniała gmina Ojców. W latach 1975–1998 miejscowość położona była w województwie krakowskim. W latach 1928–1966 Ojców miał status uzdrowiska posiadającego charakter użyteczności publicznej.",
-            "adultPrice": 200,
-            "childPrice": 100
+          "title": "Ojców",
+          "adultsPrice": "99",
+          "childrenPrice": "49",
+          "adultsNumber": "1",
+          "childrenNumber": "1",
+          "totalPrice": 148
         }
-    ],
-    "orders": [
-        {
-            "id": 1,
-            "customerName": "Mariusz Polic",
-            "email": "mariuszo@gmail.com",
-            "totalPrice": 300
-        }
-    ]
+      ],
+      "timestamp": "16.02.2023, 21:59:43",
+      "id": 1
+    }
+  ]
 }

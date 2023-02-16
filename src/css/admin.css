@@ -4,8 +4,81 @@
     box-sizing: border-box;
 }
 
+:root {
+    font-family: 'Poppins', sans-serif;
+
+    --backgroundColor: #F0ECE3;
+    --primaryColor: #45ADA8;
+    --primaryHoverColor: #35beb8;
+    --secondaryColor: #9DE0AD;
+    --lightColor: #E5FCC2;
+    --darkColor: #594F4F;
+    --mediumColor: #547980;
+    --shadow: 5px 5px 15px 0px rgba(66, 68, 90, 0.2);
+    --fontColor: #000;
+    --fontLightColor: #e7f7ff;
+    --errorColor: #ff7675;
+    --errorHoverColor: #f75b5b;
+}
+
+html {
+    font-size: clamp(0.5rem, 0.75rem + 1.5vw, 1rem);
+}
+
+input, textarea {
+    border-radius: 4px;
+    border: 1px solid var(--mediumColor);
+    padding: .6em .5em;
+}
+
+input:focus-visible, textarea:focus-visible {
+    outline: 1px auto var(--primaryColor);
+}
+
+a {
+    text-decoration: none;
+}
+
 ul {
     list-style: none;
+}
+
+h1 {
+    background-color: var(--primaryColor);
+    box-shadow: var(--shadow);
+    color: var(--fontLightColor);
+    font-size: 2.5em;
+    padding: 1em 2em;
+}
+
+body {
+    background-color: var(--backgroundColor);
+}
+
+button[type="submit"] {
+    border: none;
+    background-color: var(--primaryColor);
+    box-shadow: var(--shadow);
+    border-radius: 5px;
+    color: var(--fontLightColor);
+    cursor: pointer;
+    font-size: .8em;
+    font-weight: 700;
+    padding: 1em 1.5em;
+    transition: .2s ease-in-out;
+}
+
+button[type="submit"]:hover {
+    background-color: var(--primaryHoverColor);
+    transition: .2s ease-in-out;
+}
+
+button[type="submit"].excursions__field-input--remove {
+    background-color: var(--errorColor);
+}
+
+button[type="submit"].excursions__field-input--remove:hover {
+    background-color: var(--errorHoverColor);
 }
 
 .panel {
@@ -15,33 +88,90 @@ ul {
     padding: 30px 0;
 }
 
-.panel__excursins {
+.panel__title {
+    margin-bottom: .5em;
+}
+
+.panel__excursions {
     width: 70%;
 }
 
+.form__field-error {
+    display: block;
+    color: var(--errorColor);
+    text-align: center;
+}
+
+.input--error {
+    border: 2px solid var(--errorColor);
+}
+
 .excursions {
+    align-self: flex-start;
     display: flex;
     flex-wrap: wrap;
 }
 
-.excurions__item {
-    border: 1px solid #bbb;
+.excursions__item {
+    background-color: var(--backgroundColor);
+    box-shadow: var(--shadow);
     border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    color: var(--fontColor);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    justify-content: center;
     margin: 10px;
     padding: 20px;
     width: calc(50% - 20px);
 }
 
-.panel__form {
-    background-color: #f4f4f4;
+.excursions__header {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.excursions__item--prototype {
+    display: none;
+}
+
+.element--edit {
+    background-color: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    cursor: text;
+    padding: .2em .5em;
+}
+
+.excursions__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1em;
+    width: 100%;
+}
+
+.panel__add-excursion {
+    align-self: flex-start;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    box-shadow: var(--shadow);
     padding: 20px;
     width: 30%;
 }
 
-.uploader, .order {
-    border-bottom: 1px solid #bbb;
-    margin-bottom: 20px;
-    padding-bottom: 20px;
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.form__row {
+    display: flex;
+    flex-direction: column;
 }
 
 .form__field {
@@ -50,4 +180,8 @@ ul {
 
 .form__field--longtext {
     height: 100px;
+}
+
+.order__field--submit {
+    align-self: center;
 }
