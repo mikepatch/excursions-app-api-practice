@@ -35,8 +35,8 @@ class AdminPanel {
             const excursionRootElement = targetElement.closest('.excursions__item');
             const titleElement = this.utilities.findChildElement(excursionRootElement, '.excursions__title');
             const descriptionElement = titleElement.nextElementSibling;
-            const adultPriceElement = this.utilities.findChildElement(formElement, '.adultPrice');
-            const childPriceElement = this.utilities.findChildElement(formElement, '.childPrice');
+            const adultPriceElement = this.utilities.findChildElement(formElement, '.excursions__adult-price');
+            const childPriceElement = this.utilities.findChildElement(formElement, '.excursions__child-price');
 
             const excursionElementsList = [
                 titleElement, descriptionElement, adultPriceElement, childPriceElement
