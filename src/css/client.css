@@ -239,6 +239,9 @@ body {
     overflow: hidden;
     padding: 20px;
     width: 30%;
+
+    position: sticky;
+    top: 30px;
 }
 
 .panel__order {
