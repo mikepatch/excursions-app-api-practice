@@ -222,7 +222,7 @@ body {
     color: var(--primaryHoverColor);
 }
 
-.minusBtn--disabled {
+.minusBtn--disabled, .minusBtn--disabled:hover {
     color: gray;
 }
 

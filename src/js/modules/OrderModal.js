@@ -9,7 +9,7 @@ class OrderModal {
         const modal = this._createModalElement('order-modal', orderInfo);
 
         document.body.appendChild(modal);
-        
+
         this._initModalEvents(modal);
     }
 
@@ -27,10 +27,10 @@ class OrderModal {
                                 `;
 
         orderItems.forEach(item => {
-            const { title, adultsNumber, childrenNumber, totalPrice } = item;
+            const { title, adultsQuantity, childrenQuantity, totalPrice } = item;
             const listItem = this.utilities.createELement('li', `${className}__list-item`);
 
-            listItem.innerHTML = `<strong>${title}</strong> – liczba dorosłych: ${adultsNumber}, liczba dzieci: ${childrenNumber}. Razem: ${totalPrice} PLN`;
+            listItem.innerHTML = `<strong>${title}</strong> – liczba dorosłych: ${adultsQuantity}, liczba dzieci: ${childrenQuantity}. Razem: ${totalPrice} PLN`;
 
             modalListElement.appendChild(listItem);
         });
@@ -52,8 +52,7 @@ class OrderModal {
         const isCloseButton = targetElement.classList.contains('order-modal__close-button');
 
         if (isCloseButton) {
-            const modalChildElement = targetElement.parentElement;
-            const modalRootElement = modalChildElement.parentElement;
+            const modalRootElement = targetElement.closest('.order-modal');
 
             modalRootElement.remove();
         }

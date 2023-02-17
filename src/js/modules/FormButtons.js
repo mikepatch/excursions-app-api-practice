@@ -16,7 +16,8 @@ class FormButtons {
         const inputContainer = targetElement.closest('.excursions__field-input-container');
 
         if (inputContainer) {
-            const [minusButtonElement, inputElement, plusButtonElement] = inputContainer.children;
+            const minusButtonElement = inputContainer.querySelector('.minusBtn');
+            const inputElement = inputContainer.querySelector('.excursions__field-input');
             const inputValue = Number(inputElement.value);
 
             const isMinusButton = buttonElement.classList.contains('minusBtn');

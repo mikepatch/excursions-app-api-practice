@@ -10,7 +10,6 @@ class ClientPanel {
         this.API = excursionsAPI;
         this.rootElement = document.querySelector('.panel');
         this.basket = new Basket();
-
     }
 
     init() {
@@ -45,8 +44,8 @@ class ClientPanel {
 
         const formElement = event.target;
         const fields = [
-            { name: 'adultsNumber', errorMessage: 'Wprowadź poprawną liczbę dorosłych.', required: false, pattern: '(^[0-9]+[0-9]{0,}$)', },
-            { name: 'childrenNumber', errorMessage: 'Wprowadź poprawną liczbę dzieci.', required: false, pattern: '(^[0-9]+[0-9]{0,}$)', }
+            { name: 'adultsQuantity', errorMessage: 'Wprowadź poprawną liczbę dorosłych.', required: false, pattern: '(^[0-9]+[0-9]{0,}$)', },
+            { name: 'childrenQuantity', errorMessage: 'Wprowadź poprawną liczbę dzieci.', required: false, pattern: '(^[0-9]+[0-9]{0,}$)', }
         ];
         const formManager = new FormManager(formElement, fields);
         const areFieldsCorrect = formManager.validate();

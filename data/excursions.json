@@ -47,26 +47,26 @@
     {
       "customerName": "test user",
       "email": "TestUser@gmail.com",
-      "totalPrice": 296,
+      "totalPrice": 448,
       "orderItems": [
-        {
-          "title": "Ogrodzieniec",
-          "adultsPrice": "99",
-          "childrenPrice": "49",
-          "adultsNumber": "1",
-          "childrenNumber": "1",
-          "totalPrice": 148
-        },
         {
           "title": "Ojców",
           "adultsPrice": "99",
           "childrenPrice": "49",
-          "adultsNumber": "1",
-          "childrenNumber": "1",
+          "adultsQuantity": "1",
+          "childrenQuantity": "1",
           "totalPrice": 148
+        },
+        {
+          "title": "Gdańsk",
+          "adultsPrice": "200",
+          "childrenPrice": "100",
+          "adultsQuantity": "1",
+          "childrenQuantity": "1",
+          "totalPrice": 300
         }
       ],
-      "timestamp": "16.02.2023, 21:59:43",
+      "timestamp": "17.02.2023, 13:51:36",
       "id": 1
     }
   ]

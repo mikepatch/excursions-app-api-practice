@@ -34,16 +34,12 @@ class Excursions {
     }
 
     _createExcursionItem(excursionData) {
-        const newExcursionItem = this.utilities.clonePrototype(this._findExcursionPrototype());
         const { id, title, description, adultPrice, childPrice } = excursionData;
-
-        const [headerElement, formElement] = newExcursionItem.children;
-        const [titleElement, descriptionElement] = headerElement.children;
-        const [adultFieldElement, childFieldElement] = formElement.children;
-        const [adultLabelElement] = adultFieldElement.children;
-        const [childLabelElement] = childFieldElement.children;
-        const [adultPriceElement] = adultLabelElement.children;
-        const [childPriceElement] = childLabelElement.children;
+        const newExcursionItem = this.utilities.clonePrototype(this._findExcursionPrototype());
+        const adultPriceElement = newExcursionItem.querySelector('.excursions__adult-price');
+        const childPriceElement = newExcursionItem.querySelector('.excursions__child-price');
+        const titleElement = newExcursionItem.querySelector('.excursions__title');
+        const descriptionElement = newExcursionItem.querySelector('.excursions__description');
 
         const infoElementsArr = [
             { element: titleElement, text: title },
@@ -69,13 +65,8 @@ class Excursions {
     _setInfoElementsContent(infoElementsArray) {
         infoElementsArray.forEach(infoElement => {
             const { element, text } = infoElement;
-            const isPriceElement = element.classList.contains('excursions__field-price');
 
-            if (isPriceElement) {
-                element.innerHTML = `(<span>${text}</span> PLN/os.)`;
-            } else {
-                element.innerText = text;
-            }
+            element.innerText = text;
         });
     }
 }

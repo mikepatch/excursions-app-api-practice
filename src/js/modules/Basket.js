@@ -35,42 +35,48 @@ class Basket {
     }
 
     _createBasketItem(formElement) {
-        const [titleElement] = formElement.previousElementSibling.children;
-        const [adultsFieldElement, childrenFieldElement] = formElement.children;
-        const [adultsLabelElement] = adultsFieldElement.children;
-        const [adultsPriceInfoElement] = adultsLabelElement.children;
-        const [adultsPriceElement] = adultsPriceInfoElement.children;
-        const [childrenLabelElement] = childrenFieldElement.children;
-        const [childrenPriceInfoElement] = childrenLabelElement.children;
-        const [childrenPriceElement] = childrenPriceInfoElement.children;
-        const { adultsNumber, childrenNumber } = formElement.elements;
+        const { adultsQuantity, childrenQuantity } = formElement.elements;
+        const excursionRootElement = formElement.closest('.excursions__item');
+        const titleElement = excursionRootElement.querySelector('.excursions__title');
+        const adultPriceElement = excursionRootElement.querySelector('.excursions__adult-price');
+        const childPriceElement = excursionRootElement.querySelector('.excursions__child-price');
 
         let basketItem = {};
 
-        if (this._areAdultsAndChildrenNumberCorrect(adultsNumber.value, childrenNumber.value)) {
+        if (this._areTicketsQuantityCorrect(adultsQuantity.value, childrenQuantity.value)) {
             basketItem = {
                 title: titleElement.innerText,
-                adultsPrice: adultsPriceElement.innerText,
-                childrenPrice: childrenPriceElement.innerText,
-                adultsNumber: adultsNumber.value,
-                childrenNumber: childrenNumber.value,
-                totalPrice: (adultsPriceElement.innerText * adultsNumber.value) + (childrenPriceElement.innerText * childrenNumber.value),
+                adultsPrice: adultPriceElement.innerText,
+                childrenPrice: childPriceElement.innerText,
+                adultsQuantity: adultsQuantity.value,
+                childrenQuantity: childrenQuantity.value,
+                totalPrice: this._sumBasketItemPrice({ adultPriceElement, childPriceElement }, { adultsQuantity, childrenQuantity }),
             }
 
             return basketItem;
-        }
-    }
-
-    _areAdultsAndChildrenNumberCorrect(adultNumber, childNumber) {
-        if ((!isNaN(adultNumber) && !isNaN(childNumber))
-            && (adultNumber.length !== 0 || childNumber.length !== 0)
-            && (adultNumber >= 0 && childNumber >= 0)
-            && (adultNumber > 0 || childNumber > 0)) {
-
-            return true;
         } else {
             return alert('Podaj liczbę dorosłych, lub/oraz dzieci.');
         }
+    }
+
+    _areTicketsQuantityCorrect(...inputValues) {
+        let flag = false;
+
+        inputValues.forEach(inputValue => {
+            if (!isNaN(inputValue) && inputValue.length !== 0 && inputValue >= 0 && inputValue > 0) {
+                flag = true;
+            }
+        })
+
+        return flag;
+    }
+
+    _sumBasketItemPrice(...args) {
+        const [priceElements, quantityValues] = args;
+        const { adultPriceElement, childPriceElement } = priceElements;
+        const { adultsQuantity, childrenQuantity } = quantityValues;
+
+        return (adultPriceElement.innerText * adultsQuantity.value) + (childPriceElement.innerText * childrenQuantity.value);
     }
 
     _render() {
@@ -89,36 +95,36 @@ class Basket {
     }
 
     _createBasketItemElement(basketItem) {
+        const { title, adultsPrice, childrenPrice, adultsQuantity, childrenQuantity, totalPrice } = basketItem;
         const newBasketItem = this.utilities.clonePrototype(this._findSummaryPrototype());
-        const { title, adultsPrice, childrenPrice, adultsNumber, childrenNumber, totalPrice } = basketItem;
-        const [summaryHeaderElement, pricesElement] = newBasketItem.children;
-        const [titleElement, totalPriceElement, removeButtonElement] = summaryHeaderElement.children;
+        const pricesElement = newBasketItem.querySelector('.summary__prices');
+        const titleElement = newBasketItem.querySelector('.summary__name');
+        const totalPriceElement = newBasketItem.querySelector('.summary__total-price');
 
         titleElement.innerText = title;
-
         totalPriceElement.innerText = totalPrice + ' PLN';
-        pricesElement.innerText = this._getAdultsAndChildrenNumber({ adultsNumber, adultsPrice, childrenNumber, childrenPrice });
+        pricesElement.innerText = this._getAdultsAndChildrenQuantity({ adultsQuantity, adultsPrice, childrenQuantity, childrenPrice });
 
         return newBasketItem;
     }
 
-    _getAdultsAndChildrenNumber(...tickets) {
+    _getAdultsAndChildrenQuantity(...tickets) {
         let innerText = '';
 
         const isAdultAndChild = (adultNumber, childNumber) => (adultNumber > 0 && childNumber > 0);
         const isChild = (childNumber) => childNumber > 0;
 
         tickets.forEach(ticket => {
-            const { adultsNumber, adultsPrice, childrenNumber, childrenPrice } = ticket;
+            const { adultsQuantity, adultsPrice, childrenQuantity, childrenPrice } = ticket;
 
-            if (isAdultAndChild(adultsNumber, childrenNumber)) {
-                innerText = `dorośli: ${adultsNumber} x ${adultsPrice} PLN, dzieci: ${childrenNumber} x ${childrenPrice} PLN`;
+            if (isAdultAndChild(adultsQuantity, childrenQuantity)) {
+                innerText = `dorośli: ${adultsQuantity} x ${adultsPrice} PLN, dzieci: ${childrenQuantity} x ${childrenPrice} PLN`;
             }
-            else if (isChild(childrenNumber)) {
-                innerText = `dzieci: ${childrenNumber} x ${childrenPrice} PLN`;
+            else if (isChild(childrenQuantity)) {
+                innerText = `dzieci: ${childrenQuantity} x ${childrenPrice} PLN`;
             }
             else {
-                innerText = `dorośli: ${adultsNumber} x ${adultsPrice} PLN`;
+                innerText = `dorośli: ${adultsQuantity} x ${adultsPrice} PLN`;
             }
         });
 
