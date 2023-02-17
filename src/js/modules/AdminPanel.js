@@ -50,17 +50,24 @@ class AdminPanel {
                 const updatedData = this._createUpdatedDataObject(excursionElementsList);
 
                 this.API.updateExcursionData(id, updatedData)
-                    .catch(err => console.error(err))
+                    .then((resp) => {
+                        if (resp) {
+                            alert('Zapisano zmiany! :)');
+                        }
+                    })
+                    .catch(err => {
+                        alert(`Nie udało się zapisać zmian :(\n Komunikat błędu: ${err.statusText}`);
+                        console.error(err);
+                    })
                     .finally(() => {
                         targetElement.innerText = 'Edytuj';
 
                         excursionElementsList.forEach(
                             element => {
                                 element.contentEditable = false;
-                                element.classList.remove('element--edit')
+                                element.classList.remove('element--edit');
                             }
                         )
-                        alert('Zapisano zmiany! :)')
                     });
             } else {
                 targetElement.innerText = 'Zapisz';
@@ -99,10 +106,17 @@ class AdminPanel {
                 const elementToRemoveID = excursionRootElement.dataset.excursionId;
 
                 this.API.removeExcursionData(elementToRemoveID)
-                    .catch(err => console.error(err))
+                    .then((resp) => {
+                        if (resp) {
+                            alert('Usunąłeś wycieczkę! :)');
+                        }
+                    })
+                    .catch(err => {
+                        alert(`Nie udało się usunąć wycieczki :(\n Komunikat błędu: ${err.statusText}`);
+                        console.error(err);
+                    })
                     .finally(() => {
                         this.excursions.load()
-                        alert('Usunąłeś wycieczkę! :)')
                     });
             } else {
                 return;
@@ -129,13 +143,20 @@ class AdminPanel {
             const areFieldsCorrect = formManager.validate();
 
             if (areFieldsCorrect) {
-                const newExcursionData = this._createNewExcursionDataObject(formElement)
+                const newExcursionData = this._createNewExcursionDataObject(formElement);
 
                 this.API.addExcursionData(newExcursionData)
-                    .catch(err => console.error(err))
+                    .then((resp) => {
+                        if (resp) {
+                            alert('Pomyślnie dodałeś wycieczkę! :)');
+                        }
+                    })
+                    .catch(err => {
+                        alert(`Coś poszło nie tak :(\n Komunikat błędu: ${err.statusText}`);
+                        console.error(err);
+                    })
                     .finally(() => {
-                        this.excursions.load()
-                        alert('Pomyślnie dodałeś wycieczkę! :)')
+                        this.excursions.load();
                     });
 
                 formManager.clearInputValues();
@@ -162,7 +183,7 @@ class AdminPanel {
     }
 
     _findFormElement() {
-        return document.querySelector('.form')
+        return document.querySelector('.form');
     }
 }
 
