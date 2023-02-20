@@ -60,15 +60,10 @@ class Basket {
     }
 
     _areTicketsQuantityCorrect(...inputValues) {
-        let flag = false;
-
-        inputValues.forEach(inputValue => {
-            if (!isNaN(inputValue) && inputValue.length !== 0 && inputValue >= 0 && inputValue > 0) {
-                flag = true;
-            }
-        })
-
-        return flag;
+        return inputValues.some(
+            inputValue =>
+                !isNaN(inputValue) && inputValue.length !== 0 && inputValue >= 0 && inputValue > 0
+        );
     }
 
     _sumBasketItemPrice(...args) {
